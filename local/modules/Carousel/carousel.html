@@ -1,0 +1,29 @@
+{ifloop rel="carousel.front"}
+<section class="hero-area">
+    <div id="carousel" class="hero-post-slides owl-carousel" data-ride="carousel">
+
+            {loop type="carousel" name="carousel.front" resize_mode="borders"}
+            <div class="single-hero-post bg-overlay">
+                <div class="slide-img bg-img" style="background-image: url({$IMAGE_URL});"></div>
+            <div class="container h-100 {if $LOOP_COUNT == 1}active{/if}">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <!-- Post Content -->
+                    <div class="hero-slides-content text-center">
+                        {if $TITLE}<h2>{$TITLE}</h2>{/if}
+                        <p> {if $DESCRIPTION}{$DESCRIPTION nofilter}{/if}</p>
+                        <div class="welcome-btn-group">
+
+                            {if $URL}<a href="{$URL|default:'#'}">{/if}
+                            {if $URL}</a>{/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        {/loop}
+
+      </div>
+</section><!-- #carousel -->
+{/ifloop}

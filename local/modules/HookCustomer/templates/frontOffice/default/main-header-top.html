@@ -1,0 +1,13 @@
+{loop type="auth" name="customer_info_block" role="CUSTOMER"}
+<div class="login">
+    <a href="{url path="/logout"}"><i class="fa fa-user" aria-hidden="true"></i> <span>{intl l="Log out!" d="hookcustomer.fo.default"}</span></a>
+</div>
+<div class="login">
+    <a href="{url path="/account"}"><i class="fa fa-user" aria-hidden="true"></i> <span>{intl l="My Account" d="hookcustomer.fo.default"}</span></a>
+</div>
+{/loop}
+{elseloop rel="customer_info_block"}
+<div class="login">
+    <a href="{url path="/login"}"><i class="fa fa-user" aria-hidden="true"></i> <span>{intl l="Log In!" d="hookcustomer.fo.default"}</span></a>
+</div>
+{/elseloop}

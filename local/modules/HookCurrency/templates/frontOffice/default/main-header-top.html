@@ -1,0 +1,12 @@
+<div class="language-dropdown">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">{currency attr="code"}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {loop type="currency" name="currency_available" exclude="{currency attr="id"}" }
+            <a href="{url path=" {navigate to="current" }" currency={$ISOCODE}}">{$SYMBOL} - {$NAME}</a>
+            {/loop}
+        </div>
+    </div>
+</div>

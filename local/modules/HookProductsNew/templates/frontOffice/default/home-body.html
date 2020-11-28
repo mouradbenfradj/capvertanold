@@ -1,0 +1,70 @@
+{ifloop rel="product_new"}
+<section class="new-arrivals-products-area bg-gray section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Heading -->
+                <div class="section-heading text-center">
+                    <h2>{intl l="Latest" d="hookproductsnew.fo.default"}</h2>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row"><!-- Single Product Area -->
+            {loop name="product_new" type="product" limit="4" new="yes"}
+            <!-- Use the meta tag to specify content that is not visible on the page in any way -->
+            {$product_id=$ID}
+            {loop name="brand.feature" type="feature" product="{$ID}" title="brand"}
+            {loop name="brand.value" type="feature_value" feature="{$ID}" product="$product_id"}
+            <meta itemprop="brand" content="{$TITLE}">
+            {/loop}
+            {/loop}
+            {loop name="brand.feature" type="feature" product=$ID title="isbn"}
+            {loop name="brand.value" type="feature_value" feature=$ID product=$product_id}
+            <meta itemprop="productID" content="isbn:{$TITLE}">
+            {/loop}
+            {/loop}
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
+                    <!-- Product Image -->
+                    <div class="product-img">
+                        <a href="{$URL}" itemprop="url" tabindex="-1" class="product-image overlay">
+                            {ifloop rel="image_product_new" }
+                            <img itemprop="image" class="img-responsive center-block"
+                                 {loop name="image_product_new" type="image" limit="1" product="{$ID}" force_return="true" width="255" height="302" resize_mode="borders"} src="{$IMAGE_URL}"
+                                 {/loop}
+                            alt="Product #{$LOOP_COUNT}" >
+                            {/ifloop}
+                            {elseloop rel="image_product_new"}
+                            <img itemprop="image" class="img-responsive center-block" src="{image file='assets/dist/img/280x196.png'}" alt="Product #{$LOOP_COUNT}">
+                            {/elseloop}
+                        </a>
+                    </div>
+                    <!-- Product Info -->
+                    <div class="product-info mt-15 text-center">
+                        <a href="{$URL}l">
+                            <p>{$TITLE}</p>
+                            <p>{$CHAPO}</p>
+                        </a>
+                        {loop type="category" name="category_tag" id=$DEFAULT_CATEGORY}
+                        <meta itemprop="category" content="{$TITLE}">
+                        {/loop}
+                        <meta itemprop="itemCondition" itemscope itemtype="http://schema.org/NewCondition">
+                        <meta itemprop="priceCurrency" content="{currency attr=" code"}">
+                        <link itemprop="availability" href="http://schema.org/InStock" content="in_stock"/>
+                        <h6>{format_money number=$BEST_TAXED_PRICE}</h6>
+                    </div>
+                </div>
+            </div>
+            {/loop}
+            <div class="col-12 text-center">
+                <a href="{url path="/view_all" type="new"}" class="btn alazea-btn">{intl l="+ View All"
+                d="hookproductsnew.fo.default"}</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ##### Product Area End ##### -->
+{/ifloop}
